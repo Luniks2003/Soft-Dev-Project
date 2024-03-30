@@ -7,10 +7,9 @@ def index():
     return render_template("index.html")
 
 @app.route("/about")
-@app.route("/about/<name>")
 def about(name = None):
-    return render_template("about.html", name = name)
+    return render_template("about.html")
 
-@app.route("/upload")
-def upload():
-    return "upload file here"
+@app.route("/convert")
+def convert():
+    return render_template("convert.html")

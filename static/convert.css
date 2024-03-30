@@ -1,87 +1,18 @@
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    transition: 0.2s linear;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
+    min-height: 100vh;
+    width: 100%;
     position: relative;
-    background-image: url(Pics/7.png);
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(Pics/6.png);
     background-size: cover;
     background-position: center;
 }
-.header{
 
-    width: 100%;
-    position: relative;
-}
-nav 
-{
-    display: flex;
-    padding: 2% 6%;
-    justify-content: space-between;
-    align-items: center;
-}
-nav img{
-    width: 150px;
-}
-.nav-links{
-    flex: 1;
-    text-align: right;
-
-}
-.nav-links ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 8px 12px;
-    position: relative;
-}
-.nav-links ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
-    font: Tahoma;
-
-}
-.nav-links ul li::after{
-    content: '';
-    width: 0%;
-    height: 2px;
-    background: #f44336;
-    display: block;
-    margin: auto;
-    transition: 0.5s;
-}
-.nav-links ul li:hover::after{
-    width: 100%;
-}
-
-.button{
-    text-decoration: none;
-    color: white;
-    border: 1px solid white;
-    padding: 12px 34px;
-    font-size: 40px;
-    background: transparent;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    cursor: pointer;
-    align-items: center;
-    top: 120px;
-    right: 320px;
-}
-.button:hover{
-    border: 1px solid red;
-    background: red;
-    transition: 1s;
-}
-.header{
-
-    width: 100%;
-    position: relative;
-}
 nav 
 {
     display: flex;
@@ -123,38 +54,87 @@ nav img{
     width: 100%;
 }
 .text-box{
-    margin: 10px auto;
-    padding: 0 10%;
-    padding-bottom: 10px;
-    text-transform: capitalize;
     position: relative;
-    color: black;
+    color: white;
     top: 0;
     left: 0;
     text-align: center;
     z-index: 100;
 }
-
 .text-box h1{
-    font-size: 62px;
+    font-size: 55px;
     position: relative;
-    top: 120px;
-    right: 305px
-}
-.text-box p{
-    margin: 10px 0 40px;
-    font-size: 20px;
-    color: black;
-    position: relative;
-    top: 120px;
-    right: 305px
+    top: 80px;
+    right: 20px;
 }
 
-h3{
-    font-size: 35px;
-    color: black;
+.button{
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 12px 34px;
+    font-size: 40px;
+    background: transparent;
+    background-size: cover;
+    background-position: center;
     position: relative;
-    top: 120px;
-    right: 305px
+    cursor: pointer;
+    align-items: center;
+    top: 250px;
+    left: 320px;
 }
-
+.button:hover{
+    border: 1px solid red;
+    background: red;
+    transition: 1s;
+}
+.logo{
+    position: sticky;
+    
+}
+.pos{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    bottom: 100px;
+    left: 1150px;
+    
+}
+.upndown{
+    position: sticky;
+}
+.pos .upndown{
+    display: block;
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin: 0 5px;
+    overflow: hidden;
+    background: darkviolet;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-out;
+    
+}
+.pos .upndown:hover{
+    transition: transform 0.5s;
+    background-color: darkblue;
+    cursor: pointer;
+}
+.pos .upndown .iconss{
+    display: block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+    color: white;
+}
+.pos .upndown .iconss:hover{
+    color: red;
+}
