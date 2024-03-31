@@ -138,3 +138,11 @@ nav img{
 .pos .upndown .iconss:hover{
     color: red;
 }
+
+input{
+    z-index: 100;
+}
+
+form{
+    z-index: 99;
+}
