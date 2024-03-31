@@ -10,7 +10,6 @@
       <div>
          <section class="header">
             <nav>
-              
                <div class="nav-links">
                   <ul>
                      <li><a href="/">Home</a></li>
@@ -24,16 +23,18 @@
 
                <div class ="text-box">
                   <h1> Enter Image </h1>
-                  
+                  <form action="/success" method="post" enctype="multipart/form-data">
+                     <input type="file" name="file" />
+                     <input type="submit" value="Upload">
+                  </form>
                   <a href="convert" class ="button">Convert</a>
                   <div class="logo">
                      <div class="pos">
-                 
                      <a class="upndown" href="#up" >
-                         <div class="iconss"> 
-                             <i class="fa-sharp fa-solid fa-arrow-up">
-                             </i>
-                         </div>
+                        <div class="iconss"> 
+                           <i class="fa-sharp fa-solid fa-arrow-up">
+                           </i>
+                        </div>
                      </a>
                </div>
    
@@ -44,6 +45,5 @@
          </section>
       </div>
       
-
 </body>
 </html>
