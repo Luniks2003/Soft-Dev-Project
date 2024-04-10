@@ -1,5 +1,7 @@
 {
     "emmet.includeLanguages": {
         "jinja-html": "html"
-    }
+    },
+    "html-to-css-autocompletion.triggerCharacters": false,
+    "html-to-css-autocompletion.autocompletionFilesScope": "multi-root"
 }
