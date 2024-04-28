@@ -4,6 +4,10 @@ from fileinput import filename
 from flask import *
 import os
 from werkzeug.utils import secure_filename
+from PIL import Image
+import pytesseract
+
+pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract.exe'
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads/"
@@ -15,7 +19,7 @@ def index():
     return render_template("index.html")
 
 @app.route("/about")
-def about(name = None):
+def about():
     return render_template("about.html")
 
 @app.route("/convert", methods = ['GET', 'POST'])
@@ -29,20 +33,15 @@ def convert():
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if file.filename == '':
-            flash('No selected file')
+            # flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print(extract_text_from_image(UPLOAD_FOLDER+filename))
             return redirect(url_for('success', name=filename))
     return render_template("convert.html")
 
-# @app.route("/success", methods = ['GET', 'POST'])
-# def success():
-#     # if request.method == 'POST':
-#     #     file = request.files['file']
-#     #     file.save(app.config['UPLOAD_FOLDER'] + file.filename)
-#     return render_template("success.html", name = file.filename)
 @app.route("/success/<name>")
 def success(name = None):
     return render_template("success.html", name = name)
@@ -51,3 +50,8 @@ def success(name = None):
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+        
+def extract_text_from_image(image_path):
+    image = Image.open(image_path)
+    text = pytesseract.image_to_string(image)
+    return text
