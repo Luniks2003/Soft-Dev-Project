@@ -1,9 +1,10 @@
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body{
     min-height: 100vh;
     width: 100%;
@@ -11,6 +12,7 @@ body{
     background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(Pics/6.png);
     background-size: cover;
     background-position: center;
+    touch-action: pan-y;
 }
 
 nav 
@@ -88,61 +90,128 @@ nav img{
     background: red;
     transition: 1s;
 }
-.logo{
-    position: sticky;
-    
-}
-.pos{
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    bottom: 100px;
-    left: 1150px;
-    
-}
-.upndown{
-    position: sticky;
-}
-.pos .upndown{
-    display: block;
-    height: 60px;
-    width: 60px;
-    float: left;
-    margin: 0 5px;
-    overflow: hidden;
-    background: darkviolet;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s ease-out;
-    
-}
-.pos .upndown:hover{
-    transition: transform 0.5s;
-    background-color: darkblue;
-    cursor: pointer;
-}
-.pos .upndown .iconss{
-    display: block;
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    border-radius: 50px;
-    box-sizing: border-box;
-    line-height: 60px;
-    transition: all 0.3s ease-out;
-    color: white;
-}
-.pos .upndown .iconss:hover{
-    color: red;
-}
 
-input{
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+  }
+  
+
+  .popup span {
+    position: absolute;
+    top: 0px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+    font-size: 60px;
+    font-weight: bolder;
+    color: white;
+    z-index: 100000; /* Ensure the close button is above other elements */
+    cursor:pointer; /* Add cursor pointer to indicate it's clickable */
+}
+  .popup img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid white;
+    border-radius: 5px;
+    width: 750px;
+    height: 600px;
+    object-fit: fill;
+  }
+  
+:root {
+    --blue: #0071FF;
+    --light-blue: #B6DBF6;
+    --dark-blue: #005DD1;
+    --grey: #f2f2f2;
+}
+.container {
+    max-width: 350px;
+    width: 100%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    position: absolute;
+    top: 100px;
+}
+.img-area {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background: var(--grey);
+    margin-bottom: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.img-area .icon {
+    font-size: 100px;
+}
+.img-area h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.img-area p {
+    color: #999;
+}
+.img-area p span {
+    font-weight: 600;
+}
+.img-area img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     z-index: 100;
 }
-
-form{
-    z-index: 99;
+.img-area::before {
+    content: attr(data-img);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+    z-index: 200;
+}
+.img-area.active:hover::before {
+    opacity: 1;
+}
+.select-image {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    border-radius: 15px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.select-image:hover {
+    background: var(--dark-blue);
 }
