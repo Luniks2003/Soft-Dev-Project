@@ -40,8 +40,8 @@ def convert():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            print("pytesseract: \n" + extract_text_from_image_pytesseract(UPLOAD_FOLDER+filename))
-            print("aspose: \n" + extract_text_from_image_aspose(UPLOAD_FOLDER+filename))
+            # print("pytesseract: \n" + extract_text_from_image_pytesseract(UPLOAD_FOLDER+filename))
+            # print("aspose: \n" + extract_text_from_image_aspose(UPLOAD_FOLDER+filename))
             print("easyocr: \n")
             extract_text_from_image_easyocr(UPLOAD_FOLDER+filename)
             return redirect(request.url)
@@ -51,11 +51,10 @@ def convert():
 def success(name = None):
     return render_template("success.html", name = name)
 
-
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-        
+
 def extract_text_from_image_pytesseract(image_path):
     image = Image.open(image_path)
     text = pytesseract.image_to_string(image)
