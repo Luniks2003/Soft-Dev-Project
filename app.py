@@ -5,11 +5,9 @@ from flask import *
 import os
 from werkzeug.utils import secure_filename
 from PIL import Image
-import pytesseract
-import aspose.ocr as ocr
-import easyocr
-
-pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR\\tesseract.exe'
+import io
+import os
+from google.cloud import vision
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads/"
@@ -40,10 +38,7 @@ def convert():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # print("pytesseract: \n" + extract_text_from_image_pytesseract(UPLOAD_FOLDER+filename))
-            # print("aspose: \n" + extract_text_from_image_aspose(UPLOAD_FOLDER+filename))
-            print("easyocr: \n")
-            extract_text_from_image_easyocr(UPLOAD_FOLDER+filename)
+            print(detect_handwriting(UPLOAD_FOLDER + filename))
             return redirect(request.url)
     return render_template("convert.html")
 
@@ -55,27 +50,28 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def extract_text_from_image_pytesseract(image_path):
-    image = Image.open(image_path)
-    text = pytesseract.image_to_string(image)
-    return text
+# Set up authentication
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'htr-project-school-2139d4c4aec4.json'
 
-def extract_text_from_image_aspose(image_path):
-    # Initialize an instance of Aspose.OCR API
-    api = ocr.AsposeOcr()
-    # Add image to the recognition batch
-    input = ocr.OcrInput(ocr.InputType.SINGLE_IMAGE)
-    input.add(image_path)
-    # Extract and show text
-    results = api.recognize_handwritten_text(input)
-    text = results[0].recognition_text
-    return text
+# Initialize the Vision API client
+client = vision.ImageAnnotatorClient()
 
-def extract_text_from_image_easyocr(image_path):
+def detect_handwriting(path):
+    """Detects handwritten text in the file."""
+    with io.open(path, 'rb') as image_file:
+        content = image_file.read()
+
+    image = vision.Image(content=content)
+    response = client.document_text_detection(image=image)
     
-    reader = easyocr.Reader(['en']) # specify the language  
-    result = reader.readtext(image_path)
-
-    for (bbox, text, prob) in result:
-        print(f'Text: {text}, Probability: {prob}')
-        
+    # Extracting text
+    annotations = response.text_annotations
+    if annotations:
+        extracted_text = response.text_annotations[0].description
+    else:
+        extracted_text = 'No handwriting detected.'
+    
+    if response.error.message:
+        raise Exception(f'{response.error.message}')
+    
+    return extracted_text
