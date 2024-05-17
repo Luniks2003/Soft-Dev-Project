@@ -9,7 +9,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'htr-project-school-2139d4c4aec4.
 client = vision.ImageAnnotatorClient()
 
 def detect_handwriting(path):
-    """Detects handwritten text in the file."""
+    # Detects handwritten text in the file.
     with io.open(path, 'rb') as image_file:
         content = image_file.read()
 

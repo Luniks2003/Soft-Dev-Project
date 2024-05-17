@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for when an image is selected
     inputFile.addEventListener('change', function () {
         const image = this.files[0];
-        if (image.size < 10000000) {
+        if (image.size < 2000000) {
             const reader = new FileReader();
             reader.onload = () => {
                 const imgUrl = reader.result;

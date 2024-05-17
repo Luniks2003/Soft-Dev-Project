@@ -100,10 +100,10 @@ nav img{
     width: 100%;
     z-index: 100;
     display: none;
-  }
-  
+}
 
-  .popup span {
+
+.popup span {
     position: absolute;
     top: 0px; /* Adjust the top position as needed */
     right: 10px; /* Adjust the right position as needed */
@@ -113,7 +113,7 @@ nav img{
     z-index: 100000; /* Ensure the close button is above other elements */
     cursor:pointer; /* Add cursor pointer to indicate it's clickable */
 }
-  .popup img{
+.popup img{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -123,8 +123,8 @@ nav img{
     width: 750px;
     height: 600px;
     object-fit: fill;
-  }
-  
+}
+
 :root {
     --blue: #0071FF;
     --light-blue: #B6DBF6;
@@ -139,6 +139,7 @@ nav img{
     border-radius: 30px;
     position: absolute;
     top: 100px;
+    left: 50%;
 }
 .img-area {
     position: relative;
@@ -214,4 +215,8 @@ nav img{
 }
 .select-image:hover {
     background: var(--dark-blue);
+}
+.converted-text{
+    top: 20%;
+    position: absolute;
 }
