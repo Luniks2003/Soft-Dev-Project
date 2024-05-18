@@ -86,9 +86,9 @@ def create_file(edited_text):
     file = open('extracted-text-files/' + filename, 'w')
     file.write(edited_text)
     file.close
-    text_file_name = 'extracted-text-files/' + filename
+    text_file_location = 'extracted-text-files/' + filename
     
-    return text_file_name
+    return text_file_location
 
 import random
 import string
