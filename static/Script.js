@@ -7,12 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const popup = document.querySelector('.popup')
     const popupImg = document.querySelector('.popup img')
     const closeBtn = document.querySelector('.popup .close')
+    const downloadFileForm = document.querySelector('#download')
+    const downloadFile = document.querySelector('.download-image')
 
     // Event listener for when the 'Select Image' button is clicked
     selectImage.addEventListener('click', function () {
         // Trigger a click event on the inputFile element to open the file picker
         inputFile.click();
-    });
+    })  
+
+    downloadFile.addEventListener('click', () =>{
+        downloadFileForm.click();
+    })
 
     // Event listener for when the 'Upload Image' button is clicked
     uploadFile.addEventListener('click', () => {
@@ -21,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for when an image is selected
     inputFile.addEventListener('change', function () {
         const image = this.files[0];
-        if (image.size < 2000000) {
+        if (image.size < 10000000) {
             const reader = new FileReader();
             reader.onload = () => {
                 const imgUrl = reader.result;
