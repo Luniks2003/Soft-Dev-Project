@@ -95,7 +95,7 @@ import string
 
 
 def generate_random_filename(length: int = 24, extension: str = "") -> str:
-    """Generates a random filename"""
+    # Generates a random filename
     characters = string.ascii_letters + string.digits
     random_string = "".join(random.choice(characters) for _ in range(length))
     if extension:

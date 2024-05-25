@@ -1,4 +1,3 @@
-
 *{
     padding: 0;
     margin: 0;
@@ -70,26 +69,6 @@ nav img{
     right: 20px;
 }
 
-.button{
-    text-decoration: none;
-    color: white;
-    border: 1px solid white;
-    padding: 12px 34px;
-    font-size: 40px;
-    background: transparent;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    cursor: pointer;
-    align-items: center;
-    top: 250px;
-    left: 320px;
-}
-.button:hover{
-    border: 1px solid red;
-    background: red;
-    transition: 1s;
-}
 
 .popup{
     position: fixed;
@@ -105,13 +84,13 @@ nav img{
 
 .popup span {
     position: absolute;
-    top: 0px; /* Adjust the top position as needed */
-    right: 10px; /* Adjust the right position as needed */
+    top: 0px; 
+    right: 10px; 
     font-size: 60px;
     font-weight: bolder;
     color: white;
-    z-index: 100000; /* Ensure the close button is above other elements */
-    cursor:pointer; /* Add cursor pointer to indicate it's clickable */
+    z-index: 100000; 
+    cursor:pointer;
 }
 .popup img{
     position: absolute;
@@ -134,12 +113,13 @@ nav img{
 .container {
     max-width: 350px;
     width: 100%;
+    height: 430px;
     background: #fff;
     padding: 30px;
     border-radius: 30px;
     position: absolute;
-    top: 100px;
-    left: 50%;
+    top: 80px;
+    left: 400px;
 }
 .img-area {
     position: relative;
@@ -216,7 +196,87 @@ nav img{
 .select-image:hover {
     background: var(--dark-blue);
 }
+
+.upload-image {
+    display: block;
+    width: 40%;
+    margin-top: 12px;
+    padding: 16px 0;
+    border-radius: 15px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.upload-image:hover {
+    background: var(--dark-blue);
+}
+
+.download-image {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    border-radius: 15px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.download-image:hover {
+    background: var(--dark-blue);
+}
 .converted-text{
     top: 20%;
     position: absolute;
+}
+
+.downloader {
+    max-width: 350px;
+    width: 100%;
+    height: 50%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    position: absolute;
+    top: 200px;
+    left: 1100px;
+}
+
+
+
+.download-image {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    border-radius: 15px;
+    background: blue;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.download-image:hover {
+    background: darkblue;
+}
+.textArea textarea{
+    resize: none;
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background: var(--grey);
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
